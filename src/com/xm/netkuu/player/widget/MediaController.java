@@ -248,7 +248,7 @@ public class MediaController extends io.vov.vitamio.widget.MediaController imple
 	
 	public void setDownloadRate(int rate){
 		mDownloadRate.setVisibility(View.VISIBLE);
-		mDownloadRate.setText(rate + "b/s");
+		mDownloadRate.setText(rate + "KB/s");
 	}
 	
 	public void setBatteryLevel(int percent){

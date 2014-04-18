@@ -20,7 +20,7 @@
         android:layout_gravity="center" 
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
         
     	<ProgressBar
         	style="?android:attr/progressBarStyleLarge"

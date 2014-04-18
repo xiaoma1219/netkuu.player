@@ -119,8 +119,11 @@ public class PlayerActivity extends SherlockFragmentActivity implements OnBuffer
 		
 		mVideoView = (VideoView) findViewById(R.id.video_view);	
 		
+		mVideoView.setMediaBufferingIndicator(mVideoLoadingView);
+		
 		mVideoView.setOnCompletionListener(this);
 		mVideoView.setOnInfoListener(this);
+		//mVideoView.setOnBufferingUpdateListener(l);
 		
 		mVideoView.requestFocus();
 		mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -233,8 +236,9 @@ public class PlayerActivity extends SherlockFragmentActivity implements OnBuffer
 					mVideoView.start();
 				}
 			}
-			else
+			else{
 				openVideo();
+			}
 		}
 	}
 	
