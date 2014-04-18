@@ -79,6 +79,9 @@ public class SearchActivity extends SherlockActivity {
 				if(query.length() > 0){
 					mVideoAdapter.clear();
 					mTotalLength = 0;
+					mProgressBar.setVisibility(View.VISIBLE);
+					mVideoGrid.setVisibility(View.GONE);
+					mPage = 0;
 					mVideoAdapter.notifyDataSetChanged();
 					search(query);
 				}
@@ -112,9 +115,6 @@ public class SearchActivity extends SherlockActivity {
 		
 		@Override
 		protected void onPreExecute(){
-			mProgressBar.setVisibility(View.VISIBLE);
-			mVideoGrid.setVisibility(View.GONE);
-			mVideoAdapter.clear();
 			mVideoAdapter.notifyDataSetChanged();
 		}
 		

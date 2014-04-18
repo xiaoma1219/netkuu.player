@@ -54,12 +54,18 @@ public class HomePageFragment extends SherlockFragment{
 		
 		mImageLoader = ImageLoader.getInstance();
 		
+		//Config bitmapConfig = new Config();
+		
 		mImageLoadOption = new DisplayImageOptions.Builder()
 			.showImageForEmptyUri(R.drawable.default_video_image)
 			.showImageOnFail(R.drawable.default_video_image)
 			.showImageOnLoading(R.drawable.default_video_image)
 			.cacheInMemory(true)
+			//.bitmapConfig(bitmapConfig)
+			.imageScaleType(com.nostra13.universalimageloader.core.assist.ImageScaleType.EXACTLY)
+			
 			.build();
+		
 
 		makeViews(view);
 		
@@ -205,9 +211,17 @@ public class HomePageFragment extends SherlockFragment{
 				itemView = (VideoGridItemView) view;
 			}
 			Barlist.BarlistItem item = (BarlistItem) this.getItem(position);
-			itemView.setVideoName(item.getName());
+			String videoName = item.getName();
+			itemView.setVideoName(videoName);
 			itemView.setVideoRate(item.getRate());
 			itemView.setVideoBrief(item.getBrief());
+			if(videoName.indexOf("更新") > 0 || videoName.indexOf("集全") > 0){
+				itemView.setVideoCount(videoName.substring(videoName.indexOf("(") + 1, videoName.indexOf(")")));
+			}
+			else{
+				itemView.setVideoCount(item.getCatalog());
+			}
+			itemView.setVideoImageViewWidth(mItemWidth);
 			itemView.setVideoImage(mImageLoader, mImageLoadOption, NetData.image(item.getVid(), NetData.IMAGE_SMALL));
 			return itemView;
 		}

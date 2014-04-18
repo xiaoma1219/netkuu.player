@@ -81,6 +81,7 @@ public class VideoSearchAdapter extends BaseAdapter{
 			else{
 				videoGridView.setVideoCount(media.getCatalog());
 			}
+			//videoGridView.setVideoImageViewWidth(videoGridView.getWidth());
 			videoGridView.setVideoImage(mImageLoader, mImageOptions, NetData.image(media.getVid(), 
 					NetData.IMAGE_SMALL));
 		}

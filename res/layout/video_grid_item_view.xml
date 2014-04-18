@@ -18,6 +18,8 @@
 	    	android:src="@drawable/default_video_image"
 	    	android:contentDescription="@string/video_image_desc"
 	    	android:adjustViewBounds="true"
+	    	android:maxWidth="120dp"
+	    	android:maxHeight="160dp"
 	    	android:background="#cccccc"/>
 	    <RelativeLayout
 		    android:layout_width="match_parent"

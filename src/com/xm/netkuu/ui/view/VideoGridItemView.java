@@ -7,12 +7,16 @@ import com.xm.netkuu.player.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class VideoGridItemView extends LinearLayout{
 	protected String vid;
+	
+	private static final double sImageViewRatio = 0.75;
+	
 	public VideoGridItemView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
@@ -21,7 +25,7 @@ public class VideoGridItemView extends LinearLayout{
 		this.vid = vid;
 	}
 	
-	public ImageView image(){
+	public ImageView getVideoImageView(){
 		return (ImageView)this.findViewById(R.id.video_image);
 	}
 	
@@ -62,6 +66,22 @@ public class VideoGridItemView extends LinearLayout{
 	public void setVideoImage(ImageLoader loader, DisplayImageOptions options, String uri){
 		ImageView view = (ImageView)findViewById(R.id.video_image);
 		loader.displayImage(uri, view, options);
+	}
+	
+	public void setVideoImageViewWidth(int width){
+		ImageView imageView = getVideoImageView();
+		ViewGroup.LayoutParams lp = imageView.getLayoutParams();
+		lp.width = width;
+		lp.height = (int)(width / sImageViewRatio);
+		imageView.setLayoutParams(lp);
+	}
+	
+	public void setVideoImageViewHeight(int height){
+		ImageView imageView = getVideoImageView();
+		ViewGroup.LayoutParams lp = imageView.getLayoutParams();
+		lp.height = height;
+		lp.width = (int)(height * sImageViewRatio);
+		imageView.setLayoutParams(lp);
 	}
 	
 	/*
