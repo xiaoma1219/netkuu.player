@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_home">首页</string>
+    <string name="menu_config">设置</string>
+    <string name="menu_history">历史记录</string>
+    <string name="menu_download">下载</string>
+    <string name="menu_title">菜单</string>
+    <string name="menu_search">搜索</string>
+	
+</resources>

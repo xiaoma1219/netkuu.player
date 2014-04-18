@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="video_detail_layout" type="id"/>
+    <item name="video_name" type="id"/>
+    <item name="video_director" type="id"/>
+    <item name="video_image" type="id"/>
+    <item name="video_count" type="id"/>
+    <item name="video_count_or_minutes" type="id"/>
+    <item name="video_grid_item" type="id"/>
+    <item name="video_brief" type="id"/>
+    <item name="video_rate" type="id"/>
+    <item name="video_count" type="id"/>
+    
+    <item name="download_image" type="id"/>
+    <item name="download_name" type="id"/>
+    <item name="download_speed" type="id"/>
+    <item name="download_size" type="id"/>
+    <item name="download_total" type="id"/>
+    <item name="download_percent" type="id"/>
+    <item name="mediacontroller_seekbar" type="id"/>
+    
+</resources>

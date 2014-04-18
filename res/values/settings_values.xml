@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="host_addr_names">
+        <item>安徽理工大学</item>
+    </string-array>
+    <string-array name="host_addr_values">
+        <item >http://10.10.253.1</item>
+    </string-array>
+</resources>

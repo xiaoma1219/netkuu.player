@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="vertical" >
+
+    <TextView 
+        android:id="@+id/host_address_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="@string/input_host_address_title"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:textSize="15sp"
+        />
+    <EditText
+        android:id="@+id/host_address"
+        android:hint="@string/text"
+        android:inputType="number"
+        android:digits="0123456789abcdefhttpsABCDEFHTTPS://."
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <requestFocus />
+    </EditText>
+    
+</LinearLayout>

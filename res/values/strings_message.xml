@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_probe_url_failed">探测URL失败，请确定已经连接到校园网</string>
+    <string name="msg_network_request_failed">请求数据失败，请检查网络</string>
+    <string name="msg_load_data_failed">加载数据失败</string>
+    <string name="msg_request_paly_url_failed">获取播放地址失败</string>
+</resources>

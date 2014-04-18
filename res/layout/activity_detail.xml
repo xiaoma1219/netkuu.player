@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+   	<LinearLayout
+   	    android:id="@+id/detail_frame"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:visibility="visible"
+        >
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="horizontal"
+	    	android:padding="5dp"
+	    	android:gravity="bottom"
+	        >
+	        <ImageView 
+	            android:id="@id/video_image"
+	            android:layout_width="140dp"
+	            android:layout_height="wrap_content"
+	            android:adjustViewBounds="true"
+	            android:contentDescription="@string/video_image_desc"
+	            />
+	        <LinearLayout 
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:layout_marginLeft="5dp"	
+				android:orientation="vertical" >
+	
+				<TextView
+				    android:id="@id/video_name"
+				    android:layout_width="match_parent"
+				    android:layout_height="20sp" 
+				    android:textSize="17sp"/>
+				<TextView
+				    android:id="@id/video_director"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="5dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666"/>
+				<TextView
+				    android:id="@+id/video_actor"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:layout_marginTop="2dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666"/>
+				<TextView
+				    android:id="@+id/video_type"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:layout_marginTop="2dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666" />
+				<TextView
+				    android:id="@+id/video_region"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:layout_marginTop="2dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666"/>
+				<TextView
+				    android:id="@+id/video_channel"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:layout_marginTop="2dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666"/>
+				<TextView
+				    android:id="@+id/video_publish"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:layout_marginTop="2dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666"/>
+				<TextView
+				    android:id="@+id/video_adddate"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:layout_marginTop="2dp"		
+				    android:textSize="12sp"
+				    android:textColor="#666666"/>
+	    
+		    <com.viewpagerindicator.TabPageIndicator
+		        android:id="@+id/detail_indicator"
+		        android:layout_height="wrap_content"
+		        android:layout_width="match_parent"
+		        />	
+			</LinearLayout>
+	    </LinearLayout>
+	    <android.support.v4.view.ViewPager
+	        android:id="@+id/detail_pager"
+	        android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="1"
+	        />
+    </LinearLayout>
+
+   	<LinearLayout
+        android:id="@+id/loading_progress"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:gravity="center"
+	    android:visibility="gone" >
+        
+	    <ProgressBar
+	        style="?android:attr/progressBarStyleLarge"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"/>
+	
+	    <TextView
+	        android:id="@+id/loading_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/text"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	    
+	</LinearLayout>
+
+</LinearLayout>

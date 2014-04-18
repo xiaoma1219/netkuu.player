@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">云窗视频</string>
+    <string name="action_settings">设置</string>
+    <string name="title_activity_settings">配置</string>
+    <string name="title_activity_main">云窗视频</string>
+    
+    <string name="probe_url_delimiter">正在探测地址</string>
+    <string name="finish">完成</string>
+    <string name="confirm">确定</string>
+    <string name="cancle">取消</string>
+    <string name="quit">退出</string>
+    
+    <string name="input_host_address_title">输入服务器IP地址</string>
+    <string name="alert">警告</string>
+    <string name="error">错误</string>
+    
+    <string name="video_image_desc">Video Image</string>
+    <string name="title_activity_search">搜索</string>
+    <string name="title_activity_download">下载</string>
+    <string name="title_activity_detail">详情</string>
+    <string name="video_brief_title">简介：</string>
+    <string name="video_snapshots_title">剧照：</string>
+    <string name="title_activity_play">播放</string>
+    <string name="text"></string>
+    
+    <string name="title_tvs">电视剧</string>
+    <string name="title_movies">电影</string>
+    <string name="title_variety">综艺</string>
+    <string name="title_cartoon">动漫</string>
+    
+    <string name="title_tv_hots">卫视热播</string>
+    <string name="title_tv_nation_gt">大陆港台</string>
+    <string name="title_tv_abroad_rh">日韩海外</string>
+    
+	<string name="title_movie_action_scifc">动作科幻</string>
+    <string name="title_movie_humor_love">幽默情感</string>
+    <string name="title_movie_funk">惊悚恐惧</string>
+    
+    <string name="video_layout_loading">缓冲;#8230;</string>
+    <string name="vitamio_theme_app_name">VPlayer codec</string>
+    <string name="VideoView_error_title">无法播放</string>
+    <string name="content_desc_lock">锁定</string>
+    <string name="video_original">100%</string>
+    <string name="video_fit_screen">全屏</string>
+    <string name="video_stretch">拉伸</string>
+    <string name="video_crop">裁剪</string>
+    <string name="video_screen_locked">屏幕已锁定</string>
+    <string name="video_screen_unlocked">屏幕锁定已解除</string>
+    <string name="video_layout_buffering_progress">缓冲: %.2f%%</string>
+    <string name="video_cannot_play">对不起,这个视频不能播放。</string>
+    <string name="file_explorer_sdcard_not_available">SD卡无法读取</string>
+    <string name="video_screenshot_save_in">截图存放在 %s.</string>
+    <string name="video_screenshot_failed">截图失败</string>
+    <string name="closing_file">正在退出…</string>
+    <string name="VideoView_error_text_unknown">对不起,这个视频不能播放。</string>
+    <string name="VideoView_error_button">OK</string>
+    <string name="mediacontroller_play_pause">Play/Pause</string>
+
+    <string name="mediacontroller_time_split"> / </string>
+</resources>

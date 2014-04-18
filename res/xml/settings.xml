@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ListPreference
+        android:dialogTitle="@string/host_addr_title"
+        android:entries="@array/host_addr_names"
+        android:entryValues="@array/host_addr_values"
+        android:key="@string/host_addr_key"
+        android:summary="@string/host_addr_title"
+        android:title="@string/host_addr_title" />
+
+</PreferenceScreen>
