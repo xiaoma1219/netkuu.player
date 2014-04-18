@@ -2,19 +2,32 @@ package com.xm.netkuu.ui.frame;
 
 
 import com.xm.netkuu.player.PlayerActivity;
+import com.xm.netkuu.player.PlayerHistory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class VideoEpisodePlayFragment extends VideoEpisodeFragment{
 	
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState){
-		super.onActivityCreated(savedInstanceState);
-		super.mEpisodeView.setOnItemClickListener(new OnClickListener());
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = super.onCreateView(inflater, container, savedInstanceState);
+		PlayerHistory.Query mQuery = PlayerHistory.queryByVid(inflater.getContext(), mVid);
+		while(mQuery.next()){
+			int episode = mQuery.getEpisode();
+			System.out.println(episode);
+			if(episode < mVisitedMask.length){
+				mVisitedMask[episode - 1] = true;
+			}
+		}
+		mEpisodeView.setOnItemClickListener(new OnClickListener());
+		return view;
 	}
 	
 	class OnClickListener implements OnItemClickListener{

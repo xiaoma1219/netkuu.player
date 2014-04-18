@@ -20,16 +20,17 @@ public class PlayerHistory {
 		mDatabase = new PlayerDatabase(context);
 	}
 	
-	public Query query(String uri){
-		Query query = new Query();
-		query.query(uri);
-		return query;
+	public static Query queryByVid(Context context, String vid){
+		return new Query(new PlayerDatabase(context).query(null, PlayerHistory.COLUMN_VID + "='" + vid + "'",
+				null, PlayerHistory.COLUMN_EPISODE + " DESC "));
+	}
+	
+	public Query query(String url){
+		return new Query(mDatabase.query(null, url));
 	}
 	
 	public Query query(){
-		Query query = new Query();
-		query.query();
-		return query;
+		return new Query(mDatabase.query(null));
 	}
 	
 	public int update(long id, long msec, long duration){
@@ -40,15 +41,11 @@ public class PlayerHistory {
 		return mDatabase.insert(name, uri, vid, duration, eposide);
 	}
 	
-	public class Query{
+	public static class Query{
 		private Cursor mCursor = null;
 		
-		public void query(String uri){
-			mCursor = mDatabase.query(null, uri);
-		}
-		
-		public void query(){
-			mCursor = mDatabase.query(null);
+		public Query(Cursor cursor){
+			mCursor = cursor;
 		}
 		
 		public void close(){

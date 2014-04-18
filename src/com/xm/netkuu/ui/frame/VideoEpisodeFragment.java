@@ -21,17 +21,13 @@ public class VideoEpisodeFragment extends SherlockFragment{
 	protected int mPage = 1;
 	protected int mPageSize = 50;
 	protected EpisodeAdapter mAdapter;
+	protected boolean[] mVisitedMask;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.video_episode_list_frame, null);
-	}
-	
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState){
-		super.onActivityCreated(savedInstanceState);
-		this.mInflater = LayoutInflater.from(this.getActivity());
+		this.mInflater = inflater;
+		View view = mInflater.inflate(R.layout.video_episode_list_frame, container, false);;
 		Bundle bundle = this.getArguments();
 		this.mVid = bundle.getString("vid");
 		this.mBegin = bundle.getInt("begin");
@@ -39,17 +35,27 @@ public class VideoEpisodeFragment extends SherlockFragment{
 			this.mBegin = 1;
 		this.mName = bundle.getString("name");
 		
-		this.mVideoUrlItems = bundle.getStringArray("video_url_items");
-		this.mAdapter = new EpisodeAdapter();
-		this.mEpisodeView = (GridView) this.getView().findViewById(R.id.episode_list_view);
-		this.mEpisodeView.setAdapter(this.mAdapter);
+		mVideoUrlItems = bundle.getStringArray("video_url_items");
+		mVisitedMask = new boolean[mVideoUrlItems.length];
+		for(int i = 0; i < mVisitedMask.length; i++){
+			mVisitedMask[i] = false;
+		}
+		mAdapter = new EpisodeAdapter();
+		mEpisodeView = (GridView) view.findViewById(R.id.episode_list_view);
+		mEpisodeView.setAdapter(mAdapter);
+		return view;
 	}
 	
-	
+	/*
 	public void setUrls(String[] urls){
 		this.mVideoUrlItems = urls;
+		mVisitedMask = new boolean[mVideoUrlItems.length];
+		for(int i = 0; i < mVisitedMask.length; i++){
+			mVisitedMask[i] = false;
+		}
 		this.mAdapter.notifyDataSetChanged();
 	}
+	*/
 	
 	public int getEpisodeNum(int position){
 		return this.mBegin + (this.mPage - 1) * mPageSize + position;
@@ -78,12 +84,14 @@ public class VideoEpisodeFragment extends SherlockFragment{
 				view = mInflater.inflate(R.layout.video_episode_list_item_view, parent, false);
 			}
 			((TextView)view).setText(Integer.toString(position + mBegin));
-			if(mVideoUrlItems[position] == null || mVideoUrlItems[position].length() == 0){
-				view.setEnabled(false);
+
+			if(mVisitedMask.length > position && mVisitedMask[position]){
+				view.setBackgroundResource(R.drawable.list_item_visited_selector);
 			}
 			else{
-				view.setEnabled(true);
+				view.setBackgroundResource(R.drawable.list_item_selector);
 			}
+			view.setEnabled(mVideoUrlItems[position] != null && mVideoUrlItems[position].length() > 0);
 			return view;
 		}
 	}

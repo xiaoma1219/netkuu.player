@@ -73,12 +73,12 @@ public class PlayerDatabase {
 		return db.update(DB_HISTORT_TABLE, values, selection, selectionArgs);
 	}
 	
-	public long insert(String name, String uri, String vid, long duration, int eposide){
+	public long insert(String name, String uri, String vid, long duration, int episode){
 		ContentValues values = new ContentValues();
 		values.put(PlayerHistory.COLUMN_NAME, name);
 		values.put(PlayerHistory.COLUMN_URI, uri);
 		values.put(PlayerHistory.COLUMN_VID, vid);
-		values.put(PlayerHistory.COLUMN_EPISODE, eposide);
+		values.put(PlayerHistory.COLUMN_EPISODE, episode);
 		values.put(PlayerHistory.COLUMN_MSEC, 0);
 		values.put(PlayerHistory.COLUMN_DURATION, duration);
 		values.put(PlayerHistory.COLUMN_TIME, System.currentTimeMillis());
