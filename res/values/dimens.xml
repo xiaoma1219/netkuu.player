@@ -14,5 +14,6 @@
     <dimen name="video_grid_item_margin">5dp</dimen>
     
     <dimen name="video_horizontal_list_item_width">100dp</dimen>
+    <dimen name="vide_grid_item_max_width">120dp</dimen>
     <dimen name="video_horizontal_list_item_margin">3dp</dimen>
 </resources>

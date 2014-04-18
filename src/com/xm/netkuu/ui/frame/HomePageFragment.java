@@ -28,10 +28,10 @@ import com.xm.netkuu.data.entry.Barlist.BarlistItem;
 import com.xm.netkuu.data.entry.HomeFlash;
 import com.xm.netkuu.data.net.NetData;
 import com.xm.netkuu.player.R;
-import com.xm.netkuu.ui.view.TwoWayView ;
-import com.xm.netkuu.ui.view.VideoGridItemView;
 import com.xm.netkuu.ui.widget.MessageDialog;
 import com.xm.netkuu.ui.widget.RequestCatalogDataTask;
+import com.xm.netkuu.ui.widget.TwoWayView;
+import com.xm.netkuu.ui.widget.VideoGridItemView;
 import com.xm.netkuu.ui.widget.RequestCatalogDataTask.CatalogData;
 
 public class HomePageFragment extends SherlockFragment{
@@ -206,6 +206,7 @@ public class HomePageFragment extends SherlockFragment{
 				ViewGroup.LayoutParams params = itemView.getLayoutParams();
 				params.width = mItemWidth;
 				itemView.setLayoutParams(params);
+				itemView.setVideoImageViewWidth(mItemWidth);
 			}
 			else{
 				itemView = (VideoGridItemView) view;
@@ -221,7 +222,6 @@ public class HomePageFragment extends SherlockFragment{
 			else{
 				itemView.setVideoCount(item.getCatalog());
 			}
-			itemView.setVideoImageViewWidth(mItemWidth);
 			itemView.setVideoImage(mImageLoader, mImageLoadOption, NetData.image(item.getVid(), NetData.IMAGE_SMALL));
 			return itemView;
 		}

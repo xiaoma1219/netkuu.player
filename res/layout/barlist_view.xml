@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"            
 		android:layout_height="wrap_content"
 		android:text="@string/text"/>
-    <com.xm.netkuu.ui.view.TwoWayView
+    <com.xm.netkuu.ui.widget.TwoWayView
         android:id="@+id/barlist"            
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

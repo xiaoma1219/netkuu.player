@@ -1,4 +1,4 @@
-package com.xm.netkuu.ui.view;
+package com.xm.netkuu.ui.widget;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

@@ -1,10 +1,11 @@
-package com.xm.netkuu.ui.view;
+package com.xm.netkuu.ui.widget;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xm.netkuu.player.R;
-
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,17 @@ public class VideoGridItemView extends LinearLayout{
 	
 	private static final double sImageViewRatio = 0.75;
 	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public VideoGridItemView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+	}
+	
 	public VideoGridItemView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+	}
+	
+	public VideoGridItemView(Context context) {
+		super(context);
 	}
 	
 	public void setVid(String vid){
@@ -68,25 +78,28 @@ public class VideoGridItemView extends LinearLayout{
 		loader.displayImage(uri, view, options);
 	}
 	
-	public void setVideoImageViewWidth(int width){
+	public int setVideoImageViewWidth(int width){
 		ImageView imageView = getVideoImageView();
 		ViewGroup.LayoutParams lp = imageView.getLayoutParams();
 		lp.width = width;
 		lp.height = (int)(width / sImageViewRatio);
 		imageView.setLayoutParams(lp);
+		return lp.height;
 	}
 	
-	public void setVideoImageViewHeight(int height){
+	public int setVideoImageViewHeight(int height){
 		ImageView imageView = getVideoImageView();
 		ViewGroup.LayoutParams lp = imageView.getLayoutParams();
 		lp.height = height;
 		lp.width = (int)(height * sImageViewRatio);
 		imageView.setLayoutParams(lp);
+		return lp.width;
 	}
 	
-	/*
-	private String brief(String brief){
-		return brief;
+	public void refreshHeight(int height){
+		ViewGroup.LayoutParams lp = getLayoutParams();
+		lp.height = height;
+		System.out.println(height);
+		this.setLayoutParams(lp);
 	}
-	*/
 }

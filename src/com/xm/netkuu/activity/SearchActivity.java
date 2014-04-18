@@ -17,6 +17,7 @@ import com.xm.netkuu.player.R;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ProgressBar;
@@ -32,6 +33,7 @@ public class SearchActivity extends SherlockActivity {
 	private String mKey;
 	private int mPagesize = 15;
 	private int mTotalLength = 0;
+	private int mGridCols = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,11 @@ public class SearchActivity extends SherlockActivity {
 		//mSearcher = new VideoData.Searcher(this);
 		
 		mVideoGrid = (PullToRefreshGridView) findViewById(R.id.search_list_view);
+		DisplayMetrics dm = new DisplayMetrics(); 
+		getWindowManager().getDefaultDisplay().getMetrics(dm); 
+		mGridCols = dm.widthPixels / this.getResources().getDimensionPixelSize(R.dimen.vide_grid_item_max_width);
+		mVideoGrid.getRefreshableView().setNumColumns(mGridCols);
+
 		mVideoAdapter = new VideoSearchAdapter(this);
 		mVideoGrid.setAdapter(mVideoAdapter);
 		mVideoGrid.setOnItemClickListener(new OnVideoGridItemClickListener());
@@ -68,6 +75,11 @@ public class SearchActivity extends SherlockActivity {
 				}
 			}
 		});
+	}
+	@Override
+    protected void onResume() {
+		super.onResume();
+		//mVideoGrid.getRefreshableView().getRequestedColumnWidth();
 	}
 
 	@Override

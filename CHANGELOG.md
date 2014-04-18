@@ -1,5 +1,12 @@
 Change Log
 ==========
+version 0.0.4 *(2013-4-18)*
+---------------------------
+* Fixed ImageView ratio
+* Add host url address support
+* Add played history support in detial view
+* Others
+
 version 0.0.3 *(2013-4-17)*
 ---------------------------
 * Fixed crashes caused by network error

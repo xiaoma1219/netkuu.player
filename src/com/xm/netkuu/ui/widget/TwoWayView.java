@@ -19,7 +19,7 @@
  * limitations under the License.
  */
 
-package com.xm.netkuu.ui.view;
+package com.xm.netkuu.ui.widget;
 
 import java.util.ArrayList;
 import java.util.List;

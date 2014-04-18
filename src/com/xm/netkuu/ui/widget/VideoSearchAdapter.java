@@ -8,7 +8,6 @@ import com.xm.netkuu.data.entry.Total;
 import com.xm.netkuu.data.entry.Total.Media;
 import com.xm.netkuu.data.net.NetData;
 import com.xm.netkuu.player.R;
-import com.xm.netkuu.ui.view.VideoGridItemView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -67,11 +66,13 @@ public class VideoSearchAdapter extends BaseAdapter{
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		if (view == null) {
-			view = mInflater.inflate(R.layout.video_grid_item_view, null);
+			view = mInflater.inflate(R.layout.video_grid_item_view, parent, false);
+			((VideoGridItemView)view).getVideoImageView().setAdjustViewBounds(true);
 		}
-		VideoGridItemView videoGridView = ((VideoGridItemView)view);
 		Total.Media media = (Media) getItem(position);
 		if(media != null){
+			VideoGridItemView videoGridView = (VideoGridItemView)view;
+			
 			String videoName = media.getName();
 			videoGridView.setVideoName(videoName);
 			videoGridView.setVideoBrief(media.getBrief());
@@ -81,9 +82,18 @@ public class VideoSearchAdapter extends BaseAdapter{
 			else{
 				videoGridView.setVideoCount(media.getCatalog());
 			}
-			//videoGridView.setVideoImageViewWidth(videoGridView.getWidth());
+			/*
+			if(videoGridView.getWidth() == 0){
+				int oldHeight = videoGridView.getVideoImageView().getMeasuredHeight();
+				int height = videoGridView.setVideoImageViewWidth(videoGridView.getMeasuredWidth());
+				System.out.println(videoGridView.getMeasuredHeight());
+				videoGridView.refreshHeight(videoGridView.getMeasuredHeight() - oldHeight + height);
+			}
+			*/
+			//videoGridView.setVideoImageViewWidth(videoGridView.getMeasuredWidth());
 			videoGridView.setVideoImage(mImageLoader, mImageOptions, NetData.image(media.getVid(), 
 					NetData.IMAGE_SMALL));
+			//System.out.println(videoGridView.getMeasuredHeight());
 		}
 		return view;
 	}
