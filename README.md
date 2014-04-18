@@ -1,4 +1,7 @@
 netkuu.player
-=============
+===============
 
-Video player for netkuu.net
+netkuu.player is an online video player for netkuu.net
+
+Features
+------------
