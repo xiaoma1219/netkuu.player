@@ -67,7 +67,6 @@ public class VideoSearchAdapter extends BaseAdapter{
 	public View getView(int position, View view, ViewGroup parent) {
 		if (view == null) {
 			view = mInflater.inflate(R.layout.video_grid_item_view, parent, false);
-			((VideoGridItemView)view).getVideoImageView().setAdjustViewBounds(true);
 		}
 		Total.Media media = (Media) getItem(position);
 		if(media != null){
@@ -82,18 +81,7 @@ public class VideoSearchAdapter extends BaseAdapter{
 			else{
 				videoGridView.setVideoCount(media.getCatalog());
 			}
-			/*
-			if(videoGridView.getWidth() == 0){
-				int oldHeight = videoGridView.getVideoImageView().getMeasuredHeight();
-				int height = videoGridView.setVideoImageViewWidth(videoGridView.getMeasuredWidth());
-				System.out.println(videoGridView.getMeasuredHeight());
-				videoGridView.refreshHeight(videoGridView.getMeasuredHeight() - oldHeight + height);
-			}
-			*/
-			//videoGridView.setVideoImageViewWidth(videoGridView.getMeasuredWidth());
-			videoGridView.setVideoImage(mImageLoader, mImageOptions, NetData.image(media.getVid(), 
-					NetData.IMAGE_SMALL));
-			//System.out.println(videoGridView.getMeasuredHeight());
+			videoGridView.setVideoImage(mImageLoader, mImageOptions, NetData.image(media.getVid(), NetData.IMAGE_SMALL));
 		}
 		return view;
 	}

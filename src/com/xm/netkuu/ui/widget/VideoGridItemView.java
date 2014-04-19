@@ -36,7 +36,7 @@ public class VideoGridItemView extends LinearLayout{
 	}
 	
 	public ImageView getVideoImageView(){
-		return (ImageView)this.findViewById(R.id.video_image);
+		return (ImageView)findViewById(R.id.video_image);
 	}
 	
 	public void setVideoName(String name){

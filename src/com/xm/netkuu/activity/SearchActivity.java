@@ -31,7 +31,7 @@ public class SearchActivity extends SherlockActivity {
 	private ProgressBar mProgressBar;
 	private int mPage = 0;
 	private String mKey;
-	private int mPagesize = 15;
+	private int mPageSize = 15;
 	private int mTotalLength = 0;
 	private int mGridCols = 0;
 	
@@ -44,7 +44,10 @@ public class SearchActivity extends SherlockActivity {
 		mVideoGrid = (PullToRefreshGridView) findViewById(R.id.search_list_view);
 		DisplayMetrics dm = new DisplayMetrics(); 
 		getWindowManager().getDefaultDisplay().getMetrics(dm); 
-		mGridCols = dm.widthPixels / this.getResources().getDimensionPixelSize(R.dimen.vide_grid_item_max_width);
+		mGridCols = dm.widthPixels / this.getResources().getDimensionPixelSize(R.dimen.vide_grid_item_min_width);
+		
+		mPageSize = mGridCols * 5;
+		
 		mVideoGrid.getRefreshableView().setNumColumns(mGridCols);
 
 		mVideoAdapter = new VideoSearchAdapter(this);
@@ -62,7 +65,6 @@ public class SearchActivity extends SherlockActivity {
 		mVideoGrid.setOnRefreshListener(new OnRefreshListener2<GridView>() {
 			@Override
 			public void onPullDownToRefresh(PullToRefreshBase<GridView> refreshView) {
-				Toast.makeText(SearchActivity.this, "Pull Down!", Toast.LENGTH_SHORT).show();
 				mVideoGrid.onRefreshComplete();
 			}
 
@@ -132,7 +134,7 @@ public class SearchActivity extends SherlockActivity {
 		
 		@Override
 		protected Total doInBackground(Void... params) {
-			return VideoData.searchVideo(mPage, mPagesize, mKey);
+			return VideoData.searchVideo(mPage, mPageSize, mKey);
 		}
 
 		@Override

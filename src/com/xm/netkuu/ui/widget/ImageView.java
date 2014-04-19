@@ -1,9 +1,11 @@
 package com.xm.netkuu.ui.widget;
 
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+/*
+ * ImageView support scale bitmap for AdjustBounds while witch is support in SDK 4.4.2
+ */
 public class ImageView extends android.widget.ImageView {
 	private boolean mAdjustViewBounds;
 	private int mMaxWidth;
@@ -77,6 +79,7 @@ public class ImageView extends android.widget.ImageView {
                                 ptop + pbottom;
                         if (newHeight > heightSize) {
                             heightSize = newHeight;
+                            finish = true;
                         }
                     }
             		if(finish){

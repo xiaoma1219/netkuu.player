@@ -34,6 +34,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+/*
+ * Video player activity
+ * TODO Player status buffering support by mediacontroller
+ * TODO Next button support
+ * TODO Mediacontroller gestures support
+ */
+
 public class PlayerActivity extends SherlockFragmentActivity implements OnBufferingUpdateListener, OnSeekCompleteListener, OnCompletionListener, OnErrorListener, OnInfoListener {
 	
 	private static final IntentFilter BATTERY_FILTER = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
