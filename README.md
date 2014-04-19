@@ -18,3 +18,10 @@ Features
 * Show homepage
 * Support Search
 * Support play online
+
+Library
+------------
+* Vitamio https://vitamio.org/
+* SherlockActionBar http://actionbarsherlock.com/
+* PullToRefresh https://github.com/chrisbanes/Android-PullToRefresh/
+* ViewPagerIndicator http://viewpagerindicator.com/
