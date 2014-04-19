@@ -21,7 +21,9 @@ Features
 
 Library
 ------------
-* Vitamio https://vitamio.org/
-* SherlockActionBar http://actionbarsherlock.com/
-* PullToRefresh https://github.com/chrisbanes/Android-PullToRefresh/
-* ViewPagerIndicator http://viewpagerindicator.com/
+* [Vitamio](https://vitamio.org/)
+* [SherlockActionBar](http://actionbarsherlock.com/)
+* [Android-PullToRefresh](https://github.com/chrisbanes/Android-PullToRefresh/)
+* [ViewPagerIndicator](http://viewpagerindicator.com/)
+* [XStream](http://xstream.codehaus.org/)
+* [Universal-Image-Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
