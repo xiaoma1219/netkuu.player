@@ -37,7 +37,7 @@ public class StartActivity extends SherlockFragmentActivity {
 		}
 		else{
 			setHostAddress(hostAddr, true);
-		}		
+		}
 	}
 
 	@Override
