@@ -27,3 +27,7 @@ Library
 * [ViewPagerIndicator](http://viewpagerindicator.com/)
 * [XStream](http://xstream.codehaus.org/)
 * [Universal-Image-Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
+
+Contact
+------------
+* E-MAIL: xiaoma.ah@gmail.com
