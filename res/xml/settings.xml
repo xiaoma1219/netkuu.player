@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <ListPreference
+    <EditTextPreference 
         android:dialogTitle="@string/host_addr_title"
-        android:entries="@array/host_addr_names"
-        android:entryValues="@array/host_addr_values"
         android:key="@string/host_addr_key"
-        android:summary="@string/host_addr_title"
-        android:title="@string/host_addr_title" />
+        android:summary="@string/host_addr_summary"
+        android:title="@string/host_addr_title"/>
+    <PreferenceCategory 
+        android:title="@string/video_settings_title">        
+        <ListPreference 
+            android:title="@string/video_quality_settings_title" 
+            android:key="@string/video_quality_key"
+            android:entries="@array/video_quality_entry" 
+            android:entryValues="@array/video_quality_values" 
+            android:summary="@string/video_quality_settings_summary"
+            android:defaultValue="@string/video_quality_value_defaule" />
+        <SwitchPreference 
+            android:key="@string/video_auto_continue_key" 
+            android:summary="@string/video_auto_continue_summary" 
+            android:title="@string/video_auto_continue_title" 
+            android:defaultValue="true"/>
+         
+    </PreferenceCategory>
 
 </PreferenceScreen>

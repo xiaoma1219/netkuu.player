@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_home">首页</string>
+    <string name="menu_config">设置</string>
+    <string name="menu_history">历史记录</string>
+    <string name="menu_download">下载</string>
+    <string name="menu_title">菜单</string>
+    <string name="menu_search">搜索</string>
+    
+    <string-array name="group_navigation">
+        <item>首页</item>
+        <item>频道</item>
+        <item>片库</item>
+        <item>下载</item>
+        <item>播放历史</item>
+        <item>设置</item>
+        <item>退出</item>
+    </string-array>
+    
+    <string-array name="channel">
+        <item>公开课</item>
+        <item>纪录片</item>
+        <item>讲座</item>
+        <item>电影</item>
+        <item>电视剧</item>
+        <item>综艺</item>
+        <item>动漫</item>
+    </string-array>
+    
+    <integer-array name="channel_id">
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>25</item>
+        <item>30</item>
+        <item>41</item>
+        <item>37</item>
+    </integer-array>
+	
+</resources>

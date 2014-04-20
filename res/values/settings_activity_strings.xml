@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="host_addr_title">主机地址</string>
-    <string name="host_addr_key">host_addr</string>
-    
-</resources>

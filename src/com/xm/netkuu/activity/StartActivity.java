@@ -5,7 +5,7 @@ import java.util.Locale;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.xm.netkuu.data.net.UrlClient;
-import com.xm.netkuu.data.net.NetData;
+import com.xm.netkuu.data.net.UrlData;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.ui.widget.InputHostAddressDialog;
 import com.xm.netkuu.ui.widget.MessageDialog;
@@ -78,7 +78,7 @@ public class StartActivity extends SherlockFragmentActivity {
 			hostAddr = hostAddr.trim().toLowerCase(Locale.getDefault());
 			if(Verification.verifyHostAddress(hostAddr)){
 				SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
-				hostAddr = NetData.setHostAddress(hostAddr);
+				hostAddr = UrlData.setHostAddress(hostAddr);
 				Editor edit = preference.edit();
 				edit.putString(getString(R.string.host_addr_key), hostAddr);
 				edit.commit();
@@ -89,7 +89,7 @@ public class StartActivity extends SherlockFragmentActivity {
 			}
 		}
 		else{
-			NetData.setHostAddress(hostAddr);
+			UrlData.setHostAddress(hostAddr);
 			probeSearchDelimiter();
 		}
 	}
@@ -107,7 +107,7 @@ public class StartActivity extends SherlockFragmentActivity {
 			@Override
 			protected String doInBackground(String... delimiters) {
 				for(String delimiter : delimiters){
-					String response = UrlClient.request(NetData.probeUrlDelimiter(delimiter));
+					String response = UrlClient.request(UrlData.probeUrlDelimiter(delimiter));
 					if(response != null && response.length() > 0 && response.lastIndexOf("<l>") > 0){
 						response = response.substring(response.lastIndexOf("<l>"), response.lastIndexOf("</l>"));
 						response = response.substring(response.lastIndexOf("<a>") + 3, response.lastIndexOf("</a>"));
@@ -120,7 +120,7 @@ public class StartActivity extends SherlockFragmentActivity {
 			@Override
 			protected void onPostExecute(String delimiter){
 				if(delimiter != null && delimiter.length() > 0){
-					NetData.setUrlDelimiter(delimiter);
+					UrlData.setUrlDelimiter(delimiter);
 					mProgressInfo.setText(R.string.finish);
 					startActivity(new Intent(StartActivity.this, MainActivity.class));
 					StartActivity.this.finish();
@@ -129,6 +129,6 @@ public class StartActivity extends SherlockFragmentActivity {
 					MessageDialog.error(getSupportFragmentManager(), R.string.msg_probe_url_failed);
 				}
 			}
-		}.execute(NetData.sAvaliableUrlDelimiter);
+		}.execute(UrlData.sAvaliableUrlDelimiter);
 	}
 }

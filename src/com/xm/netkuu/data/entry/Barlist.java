@@ -49,7 +49,7 @@ public class Barlist {
 		private String brief; // f
 		
 		@XStreamAlias("g")
-		private String type;// g
+		private String channel;// g
 		
 		@XStreamAlias("h")
 		private String site;// h
@@ -117,12 +117,12 @@ public class Barlist {
 			this.brief = brief;
 		}
 
-		public String getType() {
-			return type;
+		public String getChannel() {
+			return channel;
 		}
 
-		public void setType(String type) {
-			this.type = type;
+		public void setChannel(String channel) {
+			this.channel = channel;
 		}
 
 		public String getSite() {

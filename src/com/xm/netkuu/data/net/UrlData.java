@@ -5,7 +5,7 @@ import java.util.Locale;
 
 import android.content.Context;
 
-public class NetData {
+public class UrlData {
 
 	public static String HOST = "http://10.10.253.1/";
 	public static String LOCAL = "/";
@@ -40,14 +40,14 @@ public class NetData {
 	
 	public static final String HOME_FLASH = "banner1/flash.xml";
 
-	public static final int TYPE_OPEN_CLASS = 52;//公开课
-	public static final int TYPE_DOCUMENTARY = 54;//纪录片
-	public static final int TYPE_LECTURES = 54;//讲座
-	
-	public static final int TYPE_TV = 30;//电视剧
-	public static final int TYPE_MOVIE = 25;//电影
-	public static final int TYPE_VARIETY = 41;//综艺
-	public static final int TYPE_CARTOON = 37;//动漫
+	public static final int CHANNEL_OPEN_CLASS = 52;//公开课
+	public static final int CHANNEL_DOCUMENTARY = 53;//纪录片
+	public static final int CHANNEL_LECTURES = 54;//讲座
+
+	public static final int CHANNEL_MOVIE = 25;//电影
+	public static final int CHANNEL_TV = 30;//电视剧
+	public static final int CHANNEL_CARTOON = 37;//动漫
+	public static final int CHANNEL_VARIETY = 41;//综艺
 	
 	public static final int CATALOG_TV_NATION = 18;
 	public static final int CATALOG_TV_OM = 19;
@@ -97,12 +97,12 @@ public class NetData {
 	
 	public static String getBarlistXml(int type){
 		return readXml("bar-list-" + type + "_adddate.xml", 0,
-				type == TYPE_VARIETY || type == TYPE_CARTOON ? 12 : 8, "m");
+				type == CHANNEL_VARIETY || type == CHANNEL_CARTOON ? 12 : 8, "m");
 	}
 	
 	public static String getBarlistXml(int type, int catlog){
 		return readXml("bar-list-" + type + "_" + catlog + "_adddate.xml", 0,
-				type == TYPE_VARIETY || type == TYPE_CARTOON ? 12 : 8, "m");
+				type == CHANNEL_VARIETY || type == CHANNEL_CARTOON ? 12 : 8, "m");
 	}
 	
 	public static String readXml(String xml, int num1, int num2, String type ){

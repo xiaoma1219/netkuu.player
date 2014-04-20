@@ -9,7 +9,7 @@ import com.viewpagerindicator.TabPageIndicator;
 import com.xm.netkuu.data.VideoData;
 import com.xm.netkuu.data.entry.VideoDetail;
 import com.xm.netkuu.data.entry.VideoUrlItem;
-import com.xm.netkuu.data.net.NetData;
+import com.xm.netkuu.data.net.UrlData;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.ui.frame.BriefFragment;
 import com.xm.netkuu.ui.frame.VideoEpisodeDownloadFragment;
@@ -59,7 +59,7 @@ public class DetailActivity extends SherlockFragmentActivity {
 			.cacheInMemory(true)
 			.build();
 		ImageView view = (ImageView)findViewById(R.id.video_image);
-		loader.displayImage(NetData.image(mVid, NetData.IMAGE_NORMAL), view, options);
+		loader.displayImage(UrlData.image(mVid, UrlData.IMAGE_NORMAL), view, options);
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);  
 		getSupportActionBar().setHomeButtonEnabled(true);

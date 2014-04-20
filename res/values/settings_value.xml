@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="host_addr_title">主机地址</string>
+    <string name="host_addr_summary">可以是IP地址或者URL</string>
+    <string name="host_addr_key">host_addr</string>
+    
+    <string name="video_settings_title">播放器设置</string>    
+    <string name="video_quality_settings_title">视频质量</string>
+    <string name="video_quality_settings_summary">根据硬件性能选择播放画质</string>
+    <string name="video_quality_key">video_quality</string>
+    <string-array name="video_quality_entry">
+        <item>高清画质</item>
+        <item>普通画质</item>
+        <item>流畅画质</item>
+    </string-array>
+        
+    <!-- video quality setting value -->
+    <string-array name="video_quality_values">
+        <item>16</item>
+        <item>0</item>
+        <item>-16</item>
+    </string-array>
+    <string name="video_quality_value_defaule">16</string>
+    
+    <string name="video_auto_continue_title">继续观看</string>
+    <string name="video_auto_continue_summary">是否自动跳转到上次播放位置</string>
+    <string name="video_auto_continue_key">video_auto_continue</string>
+</resources>

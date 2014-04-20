@@ -86,10 +86,10 @@ public class VideoEpisodeFragment extends SherlockFragment{
 			((TextView)view).setText(Integer.toString(position + mBegin));
 
 			if(mVisitedMask.length > position && mVisitedMask[position]){
-				view.setBackgroundResource(R.drawable.list_item_visited_selector);
+				view.setBackgroundResource(R.drawable.episode_list_item_visited_selector);
 			}
 			else{
-				view.setBackgroundResource(R.drawable.list_item_selector);
+				view.setBackgroundResource(R.drawable.episode_list_item_selector);
 			}
 			view.setEnabled(mVideoUrlItems[position] != null && mVideoUrlItems[position].length() > 0);
 			return view;

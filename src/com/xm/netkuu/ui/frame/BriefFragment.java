@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.xm.netkuu.data.net.NetData;
+import com.xm.netkuu.data.net.UrlData;
 import com.xm.netkuu.player.R;
 
 public class BriefFragment extends SherlockFragment{	
@@ -49,7 +49,7 @@ public class BriefFragment extends SherlockFragment{
 					parent, false);
 			
 			view.setPadding(0, padding, 0, 0);
-			mImageLoader.displayImage(NetData.snapshot(mVid, i + 1),
+			mImageLoader.displayImage(UrlData.snapshot(mVid, i + 1),
 					(ImageView)view, mImageOptions);
 			parent.addView(view);
 		}

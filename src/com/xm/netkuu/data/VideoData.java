@@ -10,7 +10,7 @@ import com.xm.netkuu.data.entry.VideoDetail;
 import com.xm.netkuu.data.entry.HomeFlash;
 import com.xm.netkuu.data.entry.Total;
 import com.xm.netkuu.data.entry.VideoUrlItem;
-import com.xm.netkuu.data.net.NetData;
+import com.xm.netkuu.data.net.UrlData;
 import com.xm.netkuu.data.net.UrlClient;
 
 public class VideoData {	
@@ -20,7 +20,7 @@ public class VideoData {
 		//xStream.autodetectAnnotations(true);
 		xStream.ignoreUnknownElements();
 		try {
-			return (VideoDetail) xStream.fromXML(new URL(NetData.getVideoDetail(vid)));
+			return (VideoDetail) xStream.fromXML(new URL(UrlData.getVideoDetail(vid)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -31,7 +31,7 @@ public class VideoData {
 		XStream xStream = new XStream();
 		xStream.processAnnotations(VideoUrlItem.class);
 		try {
-			return (VideoUrlItem) xStream.fromXML(new URL(NetData.getVideoUrlItem(vid)));
+			return (VideoUrlItem) xStream.fromXML(new URL(UrlData.getVideoUrlItem(vid)));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -39,7 +39,7 @@ public class VideoData {
 	}
 	
 	public static String getPlayUrl(String vid, int eposide){
-		String Url = UrlClient.request(NetData.getPlayUrl(vid, eposide));
+		String Url = UrlClient.request(UrlData.getPlayUrl(vid, eposide));
 		if(Url != null && Url.contains("|||")){
 			return Url.substring(Url.indexOf("http"), Url.lastIndexOf("|||"));
 		}
@@ -51,7 +51,7 @@ public class VideoData {
 		xStream.processAnnotations(HomeFlash.class);
 		//xStream.autodetectAnnotations(true);
 		try {
-			return (HomeFlash) xStream.fromXML(new URL(NetData.HOST + NetData.HOME_FLASH));
+			return (HomeFlash) xStream.fromXML(new URL(UrlData.HOST + UrlData.HOME_FLASH));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -69,7 +69,7 @@ public class VideoData {
 		//xStream.autodetectAnnotations(true);
 		xStream.ignoreUnknownElements();
 		try {
-			return (Total) xStream.fromXML(new URL(NetData.searchVideo(page, pagesize, key)));
+			return (Total) xStream.fromXML(new URL(UrlData.searchVideo(page, pagesize, key)));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -83,9 +83,9 @@ public class VideoData {
 		xStream.ignoreUnknownElements();
 		try{
 			if(channel == null)
-				return (Barlist) xStream.fromXML(new URL(NetData.getBarlistXml(type)));
+				return (Barlist) xStream.fromXML(new URL(UrlData.getBarlistXml(type)));
 			else
-				return (Barlist) xStream.fromXML(new URL(NetData.getBarlistXml(type, channel)));
+				return (Barlist) xStream.fromXML(new URL(UrlData.getBarlistXml(type, channel)));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

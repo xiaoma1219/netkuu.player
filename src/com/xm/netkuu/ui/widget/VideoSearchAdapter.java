@@ -6,7 +6,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xm.netkuu.data.entry.Total;
 import com.xm.netkuu.data.entry.Total.Media;
-import com.xm.netkuu.data.net.NetData;
+import com.xm.netkuu.data.net.UrlData;
 import com.xm.netkuu.player.R;
 
 import android.content.Context;
@@ -81,7 +81,7 @@ public class VideoSearchAdapter extends BaseAdapter{
 			else{
 				videoGridView.setVideoCount(media.getCatalog());
 			}
-			videoGridView.setVideoImage(mImageLoader, mImageOptions, NetData.image(media.getVid(), NetData.IMAGE_SMALL));
+			videoGridView.setVideoImage(mImageLoader, mImageOptions, UrlData.image(media.getVid(), UrlData.IMAGE_SMALL));
 		}
 		return view;
 	}

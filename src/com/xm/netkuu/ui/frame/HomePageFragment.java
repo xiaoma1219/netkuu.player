@@ -26,7 +26,7 @@ import com.xm.netkuu.data.VideoData;
 import com.xm.netkuu.data.entry.Barlist;
 import com.xm.netkuu.data.entry.Barlist.BarlistItem;
 import com.xm.netkuu.data.entry.HomeFlash;
-import com.xm.netkuu.data.net.NetData;
+import com.xm.netkuu.data.net.UrlData;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.ui.widget.MessageDialog;
 import com.xm.netkuu.ui.widget.RequestCatalogDataTask;
@@ -86,16 +86,16 @@ public class HomePageFragment extends SherlockFragment{
 		mContentLayout = (ViewGroup)view.findViewById(R.id.content_layout);	
 		makeSliderView(mContentLayout);
 		new LoadBarlistDataTask().execute(
-			new CatalogData(NetData.TYPE_TV, mContext.getString(R.string.title_tv_hots)),
-			new CatalogData(NetData.TYPE_TV, mContext.getString(R.string.title_tv_nation_gt), NetData.CATALOG_TV_NATION, NetData.CATALOG_TV_GT),
-			new CatalogData(NetData.TYPE_TV, mContext.getString(R.string.title_tv_abroad_rh), NetData.CATALOG_TV_OM, NetData.CATALOG_TV_RH),
+			new CatalogData(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_hots)),
+			new CatalogData(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_nation_gt), UrlData.CATALOG_TV_NATION, UrlData.CATALOG_TV_GT),
+			new CatalogData(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_abroad_rh), UrlData.CATALOG_TV_OM, UrlData.CATALOG_TV_RH),
 			
-			new CatalogData(NetData.TYPE_MOVIE, mContext.getString(R.string.title_movie_action_scifc), NetData.CATALOG_MOVIE_ACTION, NetData.CATALOG_MOVIE_SCIFI),
-			new CatalogData(NetData.TYPE_MOVIE, mContext.getString(R.string.title_movie_humor_love), NetData.CATALOG_MOVIE_HUMOR, NetData.CATALOG_MOVIE_LOVE),
-			new CatalogData(NetData.TYPE_MOVIE, mContext.getString(R.string.title_movie_funk), NetData.CATALOG_MOVIE_TERROR),
+			new CatalogData(UrlData.CHANNEL_MOVIE, mContext.getString(R.string.title_movie_action_scifc), UrlData.CATALOG_MOVIE_ACTION, UrlData.CATALOG_MOVIE_SCIFI),
+			new CatalogData(UrlData.CHANNEL_MOVIE, mContext.getString(R.string.title_movie_humor_love), UrlData.CATALOG_MOVIE_HUMOR, UrlData.CATALOG_MOVIE_LOVE),
+			new CatalogData(UrlData.CHANNEL_MOVIE, mContext.getString(R.string.title_movie_funk), UrlData.CATALOG_MOVIE_TERROR),
 			
-			new CatalogData(NetData.TYPE_CARTOON, mContext.getString(R.string.title_cartoon)),
-			new CatalogData(NetData.TYPE_VARIETY, mContext.getString(R.string.title_variety)));
+			new CatalogData(UrlData.CHANNEL_CARTOON, mContext.getString(R.string.title_cartoon)),
+			new CatalogData(UrlData.CHANNEL_VARIETY, mContext.getString(R.string.title_variety)));
 	}
 	
 	private void makeSliderView(ViewGroup parent){
@@ -173,7 +173,7 @@ public class HomePageFragment extends SherlockFragment{
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {	
 			ImageView view = (ImageView) mInflater.inflate(R.layout.image_view_fill_width, container, false);
-			mImageLoader.displayImage(NetData.HOST + mHomeFlash.getImg().get(position), view, mImageLoadOption);
+			mImageLoader.displayImage(UrlData.HOST + mHomeFlash.getImg().get(position), view, mImageLoadOption);
 			container.addView(view);
 			return view;
 		}
@@ -222,7 +222,7 @@ public class HomePageFragment extends SherlockFragment{
 			else{
 				itemView.setVideoCount(item.getCatalog());
 			}
-			itemView.setVideoImage(mImageLoader, mImageLoadOption, NetData.image(item.getVid(), NetData.IMAGE_SMALL));
+			itemView.setVideoImage(mImageLoader, mImageLoadOption, UrlData.image(item.getVid(), UrlData.IMAGE_SMALL));
 			return itemView;
 		}
 
