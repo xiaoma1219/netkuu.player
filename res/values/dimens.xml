@@ -18,6 +18,8 @@
     <dimen name="vide_grid_item_max_width">120dp</dimen>
     <dimen name="video_horizontal_list_item_margin">3dp</dimen>
     
+     <dimen name="catalog_list_view_margin">16dp</dimen>
+    
     <dimen name="navigation_item_horizontal_padding">16dp</dimen>
     <dimen name="navigation_item_vertical_padding">16dp</dimen>
     <dimen name="navigation_child_item_horizontal_padding">35dp</dimen>

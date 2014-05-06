@@ -27,7 +27,7 @@ Library
 * [ViewPagerIndicator](http://viewpagerindicator.com/)
 * [XStream](http://xstream.codehaus.org/)
 * [Universal-Image-Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
-
+* [StickyGridHeaders](https://github.com/TonicArtos/StickyGridHeaders)
 Contact
 ------------
 * E-MAIL: xiaoma.ah@gmail.com

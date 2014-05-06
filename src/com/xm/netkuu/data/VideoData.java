@@ -3,15 +3,16 @@ package com.xm.netkuu.data;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
-import com.xm.netkuu.data.entry.Barlist;
+import com.xm.netkuu.data.entry.HtmlFlash;
+import com.xm.netkuu.data.entry.ListFlash;
+import com.xm.netkuu.data.entry.TotalVideo;
 import com.xm.netkuu.data.entry.VideoDetail;
-import com.xm.netkuu.data.entry.HomeFlash;
+import com.xm.netkuu.data.entry.DefaultFlash;
 import com.xm.netkuu.data.entry.Total;
 import com.xm.netkuu.data.entry.VideoUrlItem;
-import com.xm.netkuu.data.net.UrlData;
-import com.xm.netkuu.data.net.UrlClient;
 
 public class VideoData {	
 	public static VideoDetail getVideoDetail(String vid){
@@ -46,17 +47,80 @@ public class VideoData {
 		return null;
 	}
 	
-	public static HomeFlash getHomeFalsh(){
+	/*
+	public static Flash getHomeFlash(){
+		return getFlash(UrlData.HOME_FLASH);
+	}
+	
+
+	public static Flash getMovieFlash(){
+		return getFlash(UrlData.MOVIE_FLASH);
+	}
+
+	public static Flash getTvFlash(){
+		return getFlash(UrlData.TV_FLASH);
+	}
+	*/
+	
+	public static DefaultFlash getDefaultFlash(String url){
 		XStream xStream = new XStream();
-		xStream.processAnnotations(HomeFlash.class);
+		xStream.processAnnotations(DefaultFlash.class);
 		//xStream.autodetectAnnotations(true);
 		try {
-			return (HomeFlash) xStream.fromXML(new URL(UrlData.HOST + UrlData.HOME_FLASH));
+			return (DefaultFlash) xStream.fromXML(new URL(UrlData.HOST + url));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+	
+	/*
+	public static List<XyFlash> getOpenClassFlash(){
+		return getXyFlash("gkk");
+	}
+	
+	public static List<XyFlash> getDocumentaryFlash(){
+		return getXyFlash("jlp");
+	}
+	
+	public static List<XyFlash> getLecturesFlash(){
+		return getXyFlash("jz");
+	}
+	*/
+	
+	@SuppressWarnings("unchecked")
+	public static List<ListFlash> getListFlash(String channel){
+		XStream xStream = new XStream();
+		xStream.addImplicitCollection(ListFlash.class, channel);
+		xStream.processAnnotations(DefaultFlash.class);
+		try {
+			return  (List<ListFlash>) xStream.fromXML(new URL(UrlData.HOST + UrlData.XY_FLASH));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/*
+	public static HtmlFlash getCartoonFlash(){
+		return getHtmlFlash(UrlData.CARTOON_FLASH);
+	}
+	
+	public static HtmlFlash getVarietyFlash(){
+		return getHtmlFlash(UrlData.VARIETY_FLASH);
+	}
+	*/
+	
+	public static HtmlFlash getHtmlFlash(String url){
+		XStream xStream = new XStream();
+		xStream.processAnnotations(HtmlFlash.class);
+		//xStream.autodetectAnnotations(true);
+		String response = UrlClient.request(UrlData.HOST + url);
+		response = response.substring(response.indexOf("flink"));
+		response = response.substring(response.indexOf("\"") + 1, response.indexOf(";") - 1);
+		return (HtmlFlash) xStream.fromXML(response);
+	}
+	
 	
 	public static Total searchVideo(int page, int pagesize, String key){
 		if(key == null || key.length() == 0)
@@ -76,16 +140,16 @@ public class VideoData {
 		return null;
 	}
 	
-	public static Barlist getBarlist(int type, Integer channel){
+	public static TotalVideo getBarlist(int type, Integer channel, int pagesize){
 		XStream xStream = new XStream();
-		xStream.processAnnotations(Barlist.class);
+		xStream.processAnnotations(TotalVideo.class);
 		//xStream.autodetectAnnotations(true);
 		xStream.ignoreUnknownElements();
 		try{
 			if(channel == null)
-				return (Barlist) xStream.fromXML(new URL(UrlData.getBarlistXml(type)));
+				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(type, pagesize)));
 			else
-				return (Barlist) xStream.fromXML(new URL(UrlData.getBarlistXml(type, channel)));
+				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(type, channel, pagesize)));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

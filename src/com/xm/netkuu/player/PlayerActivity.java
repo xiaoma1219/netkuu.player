@@ -6,8 +6,8 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.player.widget.MediaController;
-import com.xm.netkuu.ui.widget.MessageDialog;
-import com.xm.netkuu.ui.widget.RequestVideoPlayUrlTask;
+import com.xm.netkuu.task.RequestVideoPlayUrlTask;
+import com.xm.netkuu.widget.MessageDialog;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnSeekCompleteListener;
