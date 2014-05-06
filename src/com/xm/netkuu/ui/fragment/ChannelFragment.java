@@ -105,7 +105,7 @@ public class ChannelFragment extends SherlockFragment{
 		}
 		else{
 			requests = new Request[1];
-			requests[0] =  new Request(mChannel, mRowColumnCount * 12, null);
+			requests[0] =  new Request(mChannel, mRowColumnCount * 12);
 		}
 		new LoadCatalogDataTask().execute(requests);
 		

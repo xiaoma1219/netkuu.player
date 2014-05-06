@@ -81,7 +81,7 @@ public class HomeFragment extends SherlockFragment{
 		mContentLayout = (ViewGroup)view.findViewById(R.id.content_layout);	
 		makeSliderView(mContentLayout);
 		new LoadBarlistDataTask().execute(
-			new RequestCatalogTask.Request(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_hots)),
+			new RequestCatalogTask.Request(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_hots), -1),
 			new RequestCatalogTask.Request(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_nation_gt), UrlData.CATALOG_TV_NATION, UrlData.CATALOG_TV_GT),
 			new RequestCatalogTask.Request(UrlData.CHANNEL_TV, mContext.getString(R.string.title_tv_abroad_rh), UrlData.CATALOG_TV_OM, UrlData.CATALOG_TV_RH),
 			
@@ -89,8 +89,8 @@ public class HomeFragment extends SherlockFragment{
 			new RequestCatalogTask.Request(UrlData.CHANNEL_MOVIE, mContext.getString(R.string.title_movie_humor_love), UrlData.CATALOG_MOVIE_HUMOR, UrlData.CATALOG_MOVIE_LOVE),
 			new RequestCatalogTask.Request(UrlData.CHANNEL_MOVIE, mContext.getString(R.string.title_movie_funk), UrlData.CATALOG_MOVIE_TERROR),
 			
-			new RequestCatalogTask.Request(UrlData.CHANNEL_CARTOON, mContext.getString(R.string.title_cartoon)),
-			new RequestCatalogTask.Request(UrlData.CHANNEL_VARIETY, mContext.getString(R.string.title_variety)));
+			new RequestCatalogTask.Request(UrlData.CHANNEL_CARTOON, mContext.getString(R.string.title_cartoon), -1),
+			new RequestCatalogTask.Request(UrlData.CHANNEL_VARIETY, mContext.getString(R.string.title_variety), -1));
 	}
 	
 	private void makeSliderView(ViewGroup parent){

@@ -111,14 +111,19 @@ public class UrlData {
 		return HOST + MOV + vid + URL;
 	}
 	
-	public static String getBarlist(int type, int pagesize){
-		return readXml("bar-list-" + type + "_adddate.xml", 0, pagesize <= 0?
-				type == CHANNEL_VARIETY || type == CHANNEL_CARTOON ? 12 : 8 : pagesize, "m");
+	public static String getBarlist(int channel, int pagesize){
+		return readXml("bar-list-" + channel + "_adddate.xml", 0, pagesize <= 0?
+				channel == CHANNEL_VARIETY || channel == CHANNEL_CARTOON ? 12 : 8 : pagesize, "m");
 	}
 	
-	public static String getBarlist(int type, int catlog, int pagesize){
-		return readXml("bar-list-" + type + "_" + catlog + "_adddate.xml", 0, pagesize <= 0?
-				type == CHANNEL_VARIETY || type == CHANNEL_CARTOON ? 12 : 8 : pagesize, "m");
+	public static String getBarlist(int channel, int catlog, int pagesize){
+		return readXml("bar-list-" + channel + "_" + catlog + "_adddate.xml", 0, pagesize <= 0?
+				channel == CHANNEL_VARIETY || channel == CHANNEL_CARTOON ? 12 : 8 : pagesize, "m");
+	}
+	
+	public static String getBarlist(int channel, String ss, int pagesize){
+		return readXml("bar-list-" + channel + "_adddate.xml&ss=" + ss, 0, pagesize <= 0?
+				channel == CHANNEL_VARIETY || channel == CHANNEL_CARTOON ? 12 : 8 : pagesize, "m");
 	}
 	
 	public static String readXml(String xml, int num1, int num2, String type ){

@@ -25,6 +25,14 @@ public class RequestCatalogTask extends AsyncTask<RequestCatalogTask.Request, Re
 			mRequestItems = null;
 		}
 		
+		public Request(int channel, int pagesize){
+			mChannel = channel;
+			mTitle = null;
+			mPageSize = pagesize;
+			mSearchStrings = null;
+			mRequestItems = null;
+		}
+		
 		public Request(int channel, String title, int... catalog){
 			mChannel = channel;
 			mTitle = title;
@@ -69,28 +77,20 @@ public class RequestCatalogTask extends AsyncTask<RequestCatalogTask.Request, Re
 	protected Void doInBackground(RequestCatalogTask.Request... params) {
 		for(int i = 0; i < params.length; i++){
 			Request request = params[i];
-			
-			List<TotalVideo.VideoItem> items = null;
+			Response response = null;
 			if(request.mRequestItems != null){
-				for(int j = 0; j < request.mRequestItems.length; j++){
-					TotalVideo list = VideoData.getBarlist(request.mChannel, request.mRequestItems[j], request.mPageSize);
-					if(list != null){
-						if(items == null){
-							items = list.getItems();
-						}
-						else{
-							items.addAll(list.getItems());
-						}
-					}
-				}
+				response = requestCatalogs(request);
+			}
+			else if(request.mSearchStrings != null){
+				response = requestSearchString(request);
 			}
 			else{
 				TotalVideo list = VideoData.getBarlist(request.mChannel, null, request.mPageSize);
 				if(list != null){
-					items = list.getItems();
+					response = new Response(request, list.getItems());
 				}
 			}
-			publishProgress(new Response(request, items));
+			publishProgress(response);
 		}
 		return null;
 	}	
@@ -114,8 +114,7 @@ public class RequestCatalogTask extends AsyncTask<RequestCatalogTask.Request, Re
 	private RequestCatalogTask.Response requestSearchString(Request request){
 		List<TotalVideo.VideoItem> items = null;
 		for(int j = 0; j < request.mSearchStrings.length; j++){
-			//TotalVideo list = VideoData.getBarlist(request.mChannel, request.mRequestItems[j], request.mPageSize);
-			TotalVideo list = VideoData.searchVideo(0, request.mPageSize, request.mSearchStrings[j]);
+			TotalVideo list = VideoData.getBarlist(request.mChannel, request.mSearchStrings[j], request.mPageSize);
 			if(list != null){
 				if(items == null){
 					items = list.getItems();

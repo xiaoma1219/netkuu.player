@@ -140,21 +140,38 @@ public class VideoData {
 		return null;
 	}
 	
-	public static TotalVideo getBarlist(int type, Integer channel, int pagesize){
+	public static TotalVideo getBarlist(int channel, int catalog, int pagesize){
 		XStream xStream = new XStream();
 		xStream.processAnnotations(TotalVideo.class);
 		//xStream.autodetectAnnotations(true);
 		xStream.ignoreUnknownElements();
 		try{
-			if(channel == null)
-				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(type, pagesize)));
+			if(catalog >= 0)
+				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(channel, catalog, pagesize)));
 			else
-				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(type, channel, pagesize)));
+				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(channel, pagesize)));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+	
+	public static TotalVideo getBarlist(int channel, String ss, int pagesize){
+		XStream xStream = new XStream();
+		xStream.processAnnotations(TotalVideo.class);
+		//xStream.autodetectAnnotations(true);
+		xStream.ignoreUnknownElements();
+		try{
+			if(ss == null)
+				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(channel, pagesize)));
+			else
+				return (TotalVideo) xStream.fromXML(new URL(UrlData.getBarlist(channel, ss, pagesize)));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	/*		
 	public static boolean InitTotal(Context context){
 		return native_setTotalFile(NetData.path(context, NetData.TOTAL_FILE));
