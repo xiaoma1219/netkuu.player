@@ -1,8 +1,5 @@
 package com.xm.netkuu.ui.activity;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.viewpagerindicator.TabPageIndicator;
@@ -23,11 +20,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetailActivity extends SherlockFragmentActivity {
+public class DetailActivity extends ActionBarActivity {
 	private String mVid;
 	private BriefAdapter mBriefAdapter; 
 	private boolean mVisible = false;

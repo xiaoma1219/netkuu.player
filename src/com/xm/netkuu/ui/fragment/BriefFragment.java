@@ -2,19 +2,19 @@ package com.xm.netkuu.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xm.netkuu.data.UrlData;
 import com.xm.netkuu.player.R;
 
-public class BriefFragment extends SherlockFragment{	
+public class BriefFragment extends Fragment{	
 	private LayoutInflater mInflater;
 	private ImageLoader mImageLoader;
 	private DisplayImageOptions mImageOptions;

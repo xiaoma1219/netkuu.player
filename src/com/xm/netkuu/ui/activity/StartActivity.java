@@ -2,8 +2,6 @@ package com.xm.netkuu.ui.activity;
 
 import java.util.Locale;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
 import com.xm.netkuu.data.UrlClient;
 import com.xm.netkuu.data.UrlData;
 import com.xm.netkuu.player.R;
@@ -14,13 +12,15 @@ import com.xm.netkuu.widget.MessageDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-public class StartActivity extends SherlockFragmentActivity {
+public class StartActivity extends ActionBarActivity {
 	private TextView mProgressInfo;
 	private View mProgressBar;
 	

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.viewpagerindicator.PageIndicator;
@@ -31,7 +31,7 @@ import com.xm.netkuu.widget.DefaultSliderAdapter;
 import com.xm.netkuu.widget.HtmlSliderAdapter;
 import com.xm.netkuu.widget.ListSliderAdapter;
 
-public class ChannelFragment extends SherlockFragment{
+public class ChannelFragment extends Fragment{
 	private LayoutInflater mInflater;
 	private ImageLoader mImageLoader;
 	private DisplayImageOptions mVideoImageLoadOption;
@@ -174,30 +174,6 @@ public class ChannelFragment extends SherlockFragment{
 			}
 		}
 	}
-/*	
-	private class LoadSilderDataTask extends AsyncTask<Void, Void, Flash>{
-		
-		@Override
-		protected void onPreExecute(){
-		}
-		
-		@Override
-		protected Flash doInBackground(Void... params) {
-			return VideoData.getHomeFalsh();
-		}
-		
-		@Override
-		protected void onPostExecute(Flash result){
-			if(result != null){
-				if(mSliderAdapter != null)
-					mSliderAdapter.setAdapterData(result);
-			}
-			else{
-				MessageDialog.error(getFragmentManager(), R.string.msg_network_request_failed);
-			}
-		}
-	}
-*/	
 
 	private class OnColumnItemClick implements OnItemClickListener{
 

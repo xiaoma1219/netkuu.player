@@ -1,6 +1,5 @@
 package com.xm.netkuu.ui.activity;
 
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.xm.netkuu.data.UrlData;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.util.Verification;
@@ -10,10 +9,11 @@ import android.preference.DialogPreference;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceActivity;
 //import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
 
-public class SettingsActivity extends SherlockPreferenceActivity {
+public class SettingsActivity extends PreferenceActivity {
 
 	DialogPreference performance;
 	@SuppressWarnings("deprecation")

@@ -2,8 +2,6 @@ package com.xm.netkuu.player;
 
 import java.util.List;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.player.widget.MediaController;
 import com.xm.netkuu.task.RequestVideoPlayUrlTask;
@@ -29,6 +27,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -41,7 +41,7 @@ import android.widget.TextView;
  * TODO Mediacontroller gestures support
  */
 
-public class PlayerActivity extends SherlockFragmentActivity implements OnBufferingUpdateListener, OnSeekCompleteListener, OnCompletionListener, OnErrorListener, OnInfoListener {
+public class PlayerActivity extends ActionBarActivity implements OnBufferingUpdateListener, OnSeekCompleteListener, OnCompletionListener, OnErrorListener, OnInfoListener {
 	
 	private static final IntentFilter BATTERY_FILTER = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 	private static final IntentFilter SCREEN_FILTER = new IntentFilter(Intent.ACTION_SCREEN_ON);

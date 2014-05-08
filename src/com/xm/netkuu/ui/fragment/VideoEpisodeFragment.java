@@ -1,9 +1,9 @@
 package com.xm.netkuu.ui.fragment;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.xm.netkuu.player.R;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-public class VideoEpisodeFragment extends SherlockFragment{
+public class VideoEpisodeFragment extends Fragment{
 	protected GridView mEpisodeView;
 	protected LayoutInflater mInflater;
 	protected String[] mVideoUrlItems;

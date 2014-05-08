@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -17,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.viewpagerindicator.PageIndicator;
@@ -33,7 +33,7 @@ import com.xm.netkuu.widget.MessageDialog;
 import com.xm.netkuu.widget.TwoWayView;
 import com.xm.netkuu.widget.VideoGridItemView;
 
-public class HomeFragment extends SherlockFragment{
+public class HomeFragment extends Fragment{
 	private Context mContext;
 	private LayoutInflater mInflater;
 	private DisplayImageOptions mImageLoadOption;

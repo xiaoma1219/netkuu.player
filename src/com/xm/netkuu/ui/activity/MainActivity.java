@@ -1,12 +1,5 @@
 package com.xm.netkuu.ui.activity;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.SearchView;
-import com.actionbarsherlock.widget.SearchView.OnQueryTextListener;
 import com.xm.netkuu.data.UrlData;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.ui.fragment.ChannelFragment;
@@ -18,18 +11,26 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
 	private SherlockActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 	private String mTitle;
 	private String mDrawerTitle;
-	private SherlockFragment mCurrentFrame;
+	private Fragment mCurrentFrame;
 	private int mCurrentNavigation = 0;
 	private int mCurrentNavigationChild;
 	private ActionBar mActionBar;
@@ -58,8 +59,9 @@ public class MainActivity extends SherlockFragmentActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.main, menu);
-		SearchView view = (SearchView)menu.findItem(R.id.menu_search).getActionView();
+		getMenuInflater().inflate(R.menu.main, menu);
+		SearchView view = (SearchView)
+				MenuItemCompat.getActionView(menu.findItem(R.id.menu_search));
 		view.setOnQueryTextListener(new OnQueryTextListener(){
 			@Override
 			public boolean onQueryTextSubmit(String query) {
@@ -100,7 +102,7 @@ public class MainActivity extends SherlockFragmentActivity {
     }    
 
     
-    private void switchContent(SherlockFragment fragment){
+    private void switchContent(Fragment fragment){
     	if(!fragment.equals(mCurrentFrame)){
 	    	mCurrentFrame = fragment;
 			getSupportFragmentManager()

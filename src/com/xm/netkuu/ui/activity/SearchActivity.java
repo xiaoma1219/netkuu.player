@@ -1,10 +1,5 @@
 package com.xm.netkuu.ui.activity;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.SearchView;
-import com.actionbarsherlock.widget.SearchView.OnQueryTextListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
@@ -17,14 +12,20 @@ import com.xm.netkuu.player.R;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SearchActivity extends SherlockActivity {
+public class SearchActivity extends ActionBarActivity {
 	private PullToRefreshGridView mVideoGrid;
 	private TextView mSearchInfo;
 	private VideoSearchAdapter mVideoAdapter;
@@ -86,7 +87,10 @@ public class SearchActivity extends SherlockActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.search, menu);SearchView view = (SearchView)menu.findItem(R.id.menu_search).getActionView();
+		getMenuInflater().inflate(R.menu.search, menu);
+
+		SearchView view = (SearchView)
+				MenuItemCompat.getActionView(menu.findItem(R.id.menu_search));
 		view.setOnQueryTextListener(new OnQueryTextListener(){
 			@Override
 			public boolean onQueryTextSubmit(String query) {
