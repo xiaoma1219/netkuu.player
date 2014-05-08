@@ -1,11 +1,10 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+      xmlns:netkuu="http://schemas.android.com/apk/res-auto" >
     <item android:id="@+id/menu_search"
-        android:title="@string/menu_search"
-        android:queryHint="@string/menu_search"
-		android:icon="@drawable/ic_menu_search"
-		android:showAsAction="ifRoom|collapseActionView"
-		android:actionViewClass="com.actionbarsherlock.widget.SearchView" />
+          android:title="@string/menu_search"
+          android:icon="@drawable/ic_menu_search"
+          netkuu:showAsAction="ifRoom|collapseActionView"
+          netkuu:actionViewClass="android.support.v7.widget.SearchView" />
     
     <item
         android:id="@+id/action_settings"

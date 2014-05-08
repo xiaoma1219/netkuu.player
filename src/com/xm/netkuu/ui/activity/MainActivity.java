@@ -62,23 +62,25 @@ public class MainActivity extends ActionBarActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		SearchView view = (SearchView)
 				MenuItemCompat.getActionView(menu.findItem(R.id.menu_search));
-		view.setOnQueryTextListener(new OnQueryTextListener(){
-			@Override
-			public boolean onQueryTextSubmit(String query) {
-				if(query.length() > 0){
-					Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-					intent.putExtra("key", query);
-					startActivity(intent);
+		if(view != null){
+			view.setOnQueryTextListener(new OnQueryTextListener(){
+				@Override
+				public boolean onQueryTextSubmit(String query) {
+					if(query.length() > 0){
+						Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+						intent.putExtra("key", query);
+						startActivity(intent);
+					}
+					return false;
 				}
-				return false;
-			}
-
-			@Override
-			public boolean onQueryTextChange(String newText) {
-				return false;
-			}			
-		});
-		return true;
+	
+				@Override
+				public boolean onQueryTextChange(String newText) {
+					return false;
+				}
+			});
+		}
+		return super.onCreateOptionsMenu(menu);
 	}
 	
 	@Override
