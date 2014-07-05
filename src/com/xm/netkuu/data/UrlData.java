@@ -46,11 +46,10 @@ public class UrlData {
 	public static final String OPEN_CLASS_FLASH = "gkk";
 	public static final String DOCUMENTARY_FLASH = "jlp";
 	public static final String LECTURES_FLASH = "jz";
-	public static final String MOVIE_FLASH = "hrdp/flash.xml";
-	public static final String TV_FLASH = " rbjc/flash.xml";	
+	public static final String MOVIE_FLASH = "banner1/hrdp/flash.xml";
+	public static final String TV_FLASH = "banner1/rbjc/flash.xml";	
 	public static final String CARTOON_FLASH = "dongman.html";
 	public static final String VARIETY_FLASH = "zongyi.html";
-	
 
 	public static final int CHANNEL_OPEN_CLASS = 52;//¹«¿ª¿Î
 	public static final int CHANNEL_DOCUMENTARY = 53;//¼ÍÂ¼Æ¬

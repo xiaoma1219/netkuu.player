@@ -9,11 +9,11 @@ import com.xm.netkuu.data.UrlData;
 import com.xm.netkuu.data.entry.HtmlFlash;
 import com.xm.netkuu.player.R;
 
-public class HtmlSliderAdapter extends AbstractSliderAdapter{
+public class SliderHtmlAdapter extends AbstractSliderAdapter{
 
 	private HtmlFlash mFlash = null;
 	
-	public HtmlSliderAdapter(Context context) {
+	public SliderHtmlAdapter(Context context) {
 		super(context);
 	}
 	

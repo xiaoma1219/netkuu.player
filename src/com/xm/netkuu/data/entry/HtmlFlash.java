@@ -6,9 +6,11 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
+@XStreamAlias("root")
 public class HtmlFlash {
+	
 	@XStreamImplicit(itemFieldName = "a") 
-	private List<HtmlFlashItem>  items;
+	private List<HtmlFlashItem> items;
 	
 	public List<HtmlFlashItem> getItems() {
 		return items;
@@ -19,6 +21,7 @@ public class HtmlFlash {
 	}
 
 	public static class HtmlFlashItem{
+		
 		@XStreamAsAttribute
 		@XStreamAlias("href")
 		private String href;
@@ -59,7 +62,7 @@ public class HtmlFlash {
 		}
 
 		public String getImg() {
-			return img.src;
+			return img.original == null ? img.src : img.original;
 		}
 
 		public void setImg(Image img) {
@@ -67,9 +70,14 @@ public class HtmlFlash {
 		}
 
 		public static class Image{
+			
+			@XStreamAsAttribute
+			@XStreamAlias("src")
+			public String src;
+			
 			@XStreamAsAttribute
 			@XStreamAlias("data-original")
-			public String src;			
+			public String original;
 		}
 	}
 }

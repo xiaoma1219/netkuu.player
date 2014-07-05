@@ -1,5 +1,6 @@
 package com.xm.netkuu.ui.fragment;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,18 +19,24 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.viewpagerindicator.PageIndicator;
 import com.xm.netkuu.data.UrlData;
+import com.xm.netkuu.data.entry.DefaultFlash;
+import com.xm.netkuu.data.entry.HtmlFlash;
+import com.xm.netkuu.data.entry.XyFlash;
 import com.xm.netkuu.data.entry.TotalVideo;
 import com.xm.netkuu.player.R;
 import com.xm.netkuu.task.RequestCatalogTask;
 import com.xm.netkuu.task.RequestCatalogTask.Request;
+import com.xm.netkuu.task.RequesXyFlashTask;
+import com.xm.netkuu.task.RequestDefaultFlashTask;
+import com.xm.netkuu.task.RequestHtmlFlashTask;
 import com.xm.netkuu.ui.activity.DetailActivity;
 import com.xm.netkuu.widget.AbstractSliderAdapter;
 import com.xm.netkuu.widget.CatalogRowView;
 import com.xm.netkuu.widget.CatalogRowView.OnItemClickListener;
 import com.xm.netkuu.widget.CatalogRowViewAdapter;
-import com.xm.netkuu.widget.DefaultSliderAdapter;
-import com.xm.netkuu.widget.HtmlSliderAdapter;
-import com.xm.netkuu.widget.ListSliderAdapter;
+import com.xm.netkuu.widget.SliderDefaultAdapter;
+import com.xm.netkuu.widget.SliderHtmlAdapter;
+import com.xm.netkuu.widget.SliderXyAdapter;
 
 public class ChannelFragment extends Fragment{
 	private LayoutInflater mInflater;
@@ -57,6 +64,10 @@ public class ChannelFragment extends Fragment{
 			.build();
 		
 		mChannel = getArguments().getInt("channel");
+		mView =  (ListView) view.findViewById(R.id.channel_list_view);
+		mChannelAdapter = new ChannelAdapter();
+		
+		
 		
 		return view;
 	}
@@ -67,33 +78,73 @@ public class ChannelFragment extends Fragment{
 		DisplayMetrics dm = new DisplayMetrics(); 
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm); 
 		mRowColumnCount = dm.widthPixels / this.getResources().getDimensionPixelSize(R.dimen.vide_grid_item_min_width);
-
-		mView =  (ListView) getView().findViewById(R.id.channel_list_view);
-		mChannelAdapter = new ChannelAdapter();
 		
 		int[] catalogs = {};
 		switch(mChannel){
 		case UrlData.CHANNEL_OPEN_CLASS:
-			mSliderAdapter = new ListSliderAdapter(getActivity());
+			mSliderAdapter = new SliderXyAdapter(getActivity());
+			new RequesXyFlashTask(){
+				@Override
+				protected void onPostExecute(XyFlash result){
+					((SliderXyAdapter)mSliderAdapter).setAdapterData(result);;
+				}
+			}.execute(XyFlash.CHANNEL_GKK);
 			break;
 		case UrlData.CHANNEL_DOCUMENTARY:
-			mSliderAdapter = new ListSliderAdapter(getActivity());
+			mSliderAdapter = new SliderXyAdapter(getActivity());
+			new RequesXyFlashTask(){
+				@Override
+				protected void onPostExecute(XyFlash result){
+					((SliderXyAdapter)mSliderAdapter).setAdapterData(result);;
+				}
+			}.execute(XyFlash.CHANNEL_JLL);
 			break;
 		case UrlData.CHANNEL_LECTURES:
-			mSliderAdapter = new ListSliderAdapter(getActivity());
+			mSliderAdapter = new SliderXyAdapter(getActivity());
+			new RequesXyFlashTask(){
+				@Override
+				protected void onPostExecute(XyFlash result){
+					((SliderXyAdapter)mSliderAdapter).setAdapterData(result);;
+				}
+			}.execute(XyFlash.CHANNEL_JZ);
 			break;
 		case UrlData.CHANNEL_TV:
-			mSliderAdapter = new DefaultSliderAdapter(getActivity());
+			mSliderAdapter = new SliderDefaultAdapter(getActivity());
+			new RequestDefaultFlashTask(){
+				@Override
+				protected void onPostExecute(DefaultFlash result){
+					((SliderDefaultAdapter)mSliderAdapter).setAdapterData(result);
+				}
+			}.execute(UrlData.TV_FLASH);
 			catalogs = UrlData.CHANNEL_TV_CATALOGS;
 			break;
 		case UrlData.CHANNEL_MOVIE:
+			mSliderAdapter = new SliderDefaultAdapter(getActivity());
+			new RequestDefaultFlashTask(){
+				@Override
+				protected void onPostExecute(DefaultFlash result){
+					((SliderDefaultAdapter)mSliderAdapter).setAdapterData(result);
+				}
+			}.execute(UrlData.MOVIE_FLASH);
 			catalogs = UrlData.CHANNEL_MOVIE_CATALOGS;
 			break;
 		case UrlData.CHANNEL_CARTOON:
-			mSliderAdapter = new HtmlSliderAdapter(getActivity());
+			mSliderAdapter = new SliderHtmlAdapter(getActivity());
+			new RequestHtmlFlashTask(){
+				@Override
+				protected void onPostExecute(HtmlFlash result){
+					((SliderHtmlAdapter)mSliderAdapter).setAdapterData(result);
+				}
+			}.execute(UrlData.CARTOON_FLASH);
 			break;
 		case UrlData.CHANNEL_VARIETY:
-			mSliderAdapter = new HtmlSliderAdapter(getActivity());
+			mSliderAdapter = new SliderHtmlAdapter(getActivity());
+			new RequestHtmlFlashTask(){
+				@Override
+				protected void onPostExecute(HtmlFlash result){
+					((SliderHtmlAdapter)mSliderAdapter).setAdapterData(result);
+				}
+			}.execute(UrlData.VARIETY_FLASH);
 			break;
 		}
 		Request[] requests;
@@ -110,6 +161,7 @@ public class ChannelFragment extends Fragment{
 		new LoadCatalogDataTask().execute(requests);
 		
 		mView.setAdapter(mChannelAdapter);
+		
 	}
 	
 	private class ChannelAdapter extends CatalogRowViewAdapter{
@@ -164,7 +216,7 @@ public class ChannelFragment extends Fragment{
 		}
 	}
 	
-	private class LoadCatalogDataTask extends RequestCatalogTask{
+	protected class LoadCatalogDataTask extends RequestCatalogTask{
 		@Override
 		protected void onProgressUpdate(RequestCatalogTask.Response... datas){
 			if(datas.length == 1){
@@ -175,7 +227,7 @@ public class ChannelFragment extends Fragment{
 		}
 	}
 
-	private class OnColumnItemClick implements OnItemClickListener{
+	protected class OnColumnItemClick implements OnItemClickListener{
 
 		@Override
 		public void onItemClick(ViewGroup parent, View view, int row,

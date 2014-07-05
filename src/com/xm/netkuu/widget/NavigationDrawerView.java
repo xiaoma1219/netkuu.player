@@ -4,6 +4,7 @@ import com.xm.netkuu.player.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -20,6 +21,7 @@ public class NavigationDrawerView extends ExpandableListView{
 	public static final int NAVIGATION_HISTORY = NAVIGATION_DOWNLOAD + 1;
 	public static final int NAVIGATION_OPTIONS = NAVIGATION_HISTORY + 1;
 	public static final int NAVIGATION_QUIT = NAVIGATION_OPTIONS + 1;
+	public static final int NAVIGATION_BLANK = NAVIGATION_QUIT + 1;
 	
 	private Context mContext;
 	private MenuDrawAdapter mAdapter;
@@ -139,9 +141,11 @@ public class NavigationDrawerView extends ExpandableListView{
 		private String[] mChannelTitle = null; // = mContext.getResources().getStringArray(R.array.navigation);
 		private int[] mChannelId = null; //= mContext.getResources().getIntArray(R.array.navigation_id);
 		private Context mContext;
+		private LayoutInflater mInflater;
 		
 		public MenuDrawAdapter(Context context){
 			mContext = context;
+			mInflater = LayoutInflater.from(context);
 			mGroupNavigation = mContext.getResources().getStringArray(R.array.group_navigation);
 			mChannelTitle = mContext.getResources().getStringArray(R.array.channel);
 			mChannelId = mContext.getResources().getIntArray(R.array.channel_id);
@@ -186,14 +190,11 @@ public class NavigationDrawerView extends ExpandableListView{
 		public View getGroupView(int groupPosition, boolean isExpanded,
 				View view, ViewGroup parent) {
 			if(view == null){
-				view = new TextView(mContext);
-				view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-				int hp = mContext.getResources().getDimensionPixelSize(R.dimen.navigation_item_horizontal_padding);
-				int vp = mContext.getResources().getDimensionPixelSize(R.dimen.navigation_item_vertical_padding);
-				view.setPadding(hp, vp, hp, vp);
+				view = mInflater.inflate(R.layout.navigation_group_item_view, parent, false);
 			}
+			TextView textView = (TextView) view.findViewById(R.id.navigation_item_title);
 			int groupId = (int)getGroupId(groupPosition);
-			if(groupId == NAVIGATION_CHANNEL){
+			if(groupId == NAVIGATION_CHANNEL || groupId == NAVIGATION_BLANK){
 				view.setEnabled(false);
 			}
 			else{
@@ -203,13 +204,13 @@ public class NavigationDrawerView extends ExpandableListView{
 			case NAVIGATION_OPTIONS:
 			case NAVIGATION_QUIT:
 				view.setBackgroundResource(R.drawable.navigation_item_dark_selector);
-				((TextView)view).setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.navigation_item_text_small));
+				textView.setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.navigation_item_text_small));
 				break;
 			default:
-				((TextView)view).setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.navigation_item_text_size));
+				textView.setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.navigation_item_text_size));
 				view.setBackgroundResource(R.drawable.navigation_item_light_stroked_selector);
 			}
-			((TextView)view).setText(getGroup(groupPosition).toString());
+			textView.setText(getGroup(groupPosition).toString());
 			setViewSelected(groupPosition, view);
 			return view;
 		}
@@ -261,7 +262,6 @@ public class NavigationDrawerView extends ExpandableListView{
 		}
 		
 		private void setViewSelected(int groupPosition, View view){
-			System.out.println(getItemAbsolutePosition(groupPosition, -1));
 			view.setSelected(getItemAbsolutePosition(groupPosition, -1) == mSelectedPosition);
 			
 		}

@@ -3,18 +3,17 @@ package com.xm.netkuu.data;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
 import com.xm.netkuu.data.entry.HtmlFlash;
-import com.xm.netkuu.data.entry.ListFlash;
+import com.xm.netkuu.data.entry.XyFlash;
 import com.xm.netkuu.data.entry.TotalVideo;
 import com.xm.netkuu.data.entry.VideoDetail;
 import com.xm.netkuu.data.entry.DefaultFlash;
 import com.xm.netkuu.data.entry.Total;
 import com.xm.netkuu.data.entry.VideoUrlItem;
 
-public class VideoData {	
+public class VideoData {
 	public static VideoDetail getVideoDetail(String vid){
 		XStream xStream = new XStream();
 		xStream.processAnnotations(VideoDetail.class);
@@ -88,13 +87,14 @@ public class VideoData {
 	}
 	*/
 	
-	@SuppressWarnings("unchecked")
-	public static List<ListFlash> getListFlash(String channel){
+	public static XyFlash getXyFlash(String channel){
 		XStream xStream = new XStream();
-		xStream.addImplicitCollection(ListFlash.class, channel);
-		xStream.processAnnotations(DefaultFlash.class);
+		xStream.processAnnotations(XyFlash.class);
+		xStream.alias(channel, XyFlash.XyFlashItem.class);
+		xStream.addImplicitCollection(XyFlash.class, "items", channel, XyFlash.XyFlashItem.class);
+		xStream.ignoreUnknownElements();
 		try {
-			return  (List<ListFlash>) xStream.fromXML(new URL(UrlData.HOST + UrlData.XY_FLASH));
+			return  (XyFlash) xStream.fromXML(new URL(UrlData.HOST + UrlData.XY_FLASH));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -114,10 +114,15 @@ public class VideoData {
 	public static HtmlFlash getHtmlFlash(String url){
 		XStream xStream = new XStream();
 		xStream.processAnnotations(HtmlFlash.class);
+		xStream.ignoreUnknownElements();
 		//xStream.autodetectAnnotations(true);
 		String response = UrlClient.request(UrlData.HOST + url);
 		response = response.substring(response.indexOf("flink"));
 		response = response.substring(response.indexOf("\"") + 1, response.indexOf(";") - 1);
+		response = "<?xml version='1.0' encoding='gb2312'?><root>" 
+				+ response.replace("\\\"", "\"").replace("</a>", "</img></a>").replace("class", "attr")
+				+ "</root>";
+		System.out.println(response);
 		return (HtmlFlash) xStream.fromXML(response);
 	}
 	

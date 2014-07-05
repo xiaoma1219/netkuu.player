@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class DefaultSliderAdapter extends AbstractSliderAdapter{
+public class SliderDefaultAdapter extends AbstractSliderAdapter{
 
 	private DefaultFlash mFlash = null;
 	private int mLength = 12;
 	
-	public DefaultSliderAdapter(Context context) {
+	public SliderDefaultAdapter(Context context) {
 		super(context);
 	}
 	

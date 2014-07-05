@@ -15,6 +15,7 @@
         <item>播放历史</item>
         <item>设置</item>
         <item>退出</item>
+        <item></item>
     </string-array>
     
     <string-array name="channel">

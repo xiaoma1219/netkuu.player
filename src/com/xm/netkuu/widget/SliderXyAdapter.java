@@ -1,26 +1,25 @@
 package com.xm.netkuu.widget;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.xm.netkuu.data.UrlData;
-import com.xm.netkuu.data.entry.ListFlash;
+import com.xm.netkuu.data.entry.XyFlash;
+import com.xm.netkuu.data.entry.XyFlash.XyFlashItem;
 import com.xm.netkuu.player.R;
 
-public class ListSliderAdapter extends AbstractSliderAdapter{
+public class SliderXyAdapter extends AbstractSliderAdapter{
 
-	private List<ListFlash> mFlash = null;
+	private XyFlash mFlash = null;
 	private int mLength = 12;
 	
-	public ListSliderAdapter(Context context) {
+	public SliderXyAdapter(Context context) {
 		super(context);
 	}
 	
-	public void setAdapterData(List<ListFlash> data){
+	public void setAdapterData(XyFlash data){
 		mFlash = data;
 		notifyDataSetChanged();
 	}
@@ -33,7 +32,7 @@ public class ListSliderAdapter extends AbstractSliderAdapter{
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		ImageView view = (ImageView) mInflater.inflate(R.layout.image_view_fill_width, container, false);
-		ListFlash item = mFlash.get(position);
+		XyFlashItem item = mFlash.getItems().get(position);
 		mImageLoader.displayImage(UrlData.HOST + item.getImg(), view, mImageLoadOption);
 		container.addView(view);
 		return view;
@@ -41,7 +40,7 @@ public class ListSliderAdapter extends AbstractSliderAdapter{
 	
 	@Override
 	public int getCount() {
-		return mFlash == null ? 0 : Math.min(mLength, mFlash.size());
+		return mFlash == null ? 0 : mFlash.getItems() == null ? 0 : Math.min(mLength, mFlash.getItems().size());
 	}
 
 	@Override
